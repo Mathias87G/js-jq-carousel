@@ -7,6 +7,11 @@ $(document).ready(function() {
   $('.next').click(function(){
       nextImage();
   });
+  $('.nav i').click(function(){
+      var selectCircle = $(this);
+      select(selectCircle);
+  // Richiamo funzione select
+  });
 
   // FUNZIONE NEXT
   function nextImage(){
@@ -46,4 +51,17 @@ $(document).ready(function() {
 
   }
 
+  // FUNZIONE CLICK AL PALLINO E VISUALIZZAZIONE RELATIVA IMMAGINE
+  function select(x){
+    // var immagini, cerchi e indice posizione
+    var activeCircle = $('.nav i.active');
+    var activeImage = $('.images img.active');
+    var position = x.index();
+    // rimuovi classe active
+    activeCircle.removeClass('active');
+    activeImage.removeClass('active');
+    // aggiungi classe active al cerchio selezionato
+    $(x).addClass('active');
+    $('.images img').eq(position).addClass('active');
+  }
 });
